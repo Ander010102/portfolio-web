@@ -13,12 +13,8 @@
 
 <body>
     <header>
-        <header>
-            <button id="menu-toggle" class="btn-canto btn-esquerda">☰ Menu</button>
-            <button class="btn-canto btn-direita" onclick="modoEscuro()">🌙 Modo Escuro</button>
-
-        </header>
-
+        <button id="menu-toggle" class="btn-canto btn-esquerda" aria-expanded="false" aria-controls="menu-mobile">☰ Menu</button>
+        <button id="botao-tema" class="btn-canto btn-direita" aria-pressed="false">🌙 Modo Escuro</button>
 
         <nav id="menu-mobile">
             <a href="#eu">Quem sou eu</a>
@@ -31,31 +27,58 @@
             <a href="#contato">✉️ Contato</a>
         </nav>
 
-        <h1 id="titulo">Meu portfólio</h1>
-        <h1>Anderson Carneiro dos Santos</h1>
+        <h1 id="titulo_principal">Anderson Carneiro dos Santos</h1>
         <div class="perfil">
             <img id="foto-perfil" src="imagens/foto de perfil.png"
                 alt="Foto de perfil de Anderson - olhando para frente">
             <div class="perfil-info">
-                <p><strong>Curso:</strong> Análise e Desenvolvimento de Sistemas</p>
+                <p class="hero-subtitulo">Estudante de Análise e Desenvolvimento de Sistemas, em busca de estágio em desenvolvimento de software.</p>
+                <p><strong>Curso:</strong> Análise e Desenvolvimento de Sistemas na Fatec Carapicuíba</p>
                 <p><strong>Cidade/UF:</strong> São Paulo/SP</p>
             </div>
         </div>
     </header>
 
-
-
+    <div class="layout-conteudo">
+        <aside class="sidebar" aria-label="Informações e atalhos do portfólio">
+            <div class="sidebar-perfil">
+                <img src="imagens/foto de perfil.png" alt="Foto de perfil de Anderson - olhando para frente" width="108" height="108" loading="lazy">
+                <h2>Anderson Carneiro dos Santos</h2>
+                <p>Estudante de ADS</p>
+            </div>
+            <div class="sidebar-bloco">
+                <h3>Informações</h3>
+                <ul class="sidebar-detalhes">
+                    <li><strong>Formação</strong><span>Fatec Carapicuíba</span></li>
+                    <li><strong>Localização</strong><span>São Paulo - SP</span></li>
+                    <li><strong>Interesse</strong><span>Estágio em desenvolvimento</span></li>
+                </ul>
+            </div>
+            <div class="sidebar-bloco">
+                <h3>Acesso rápido</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#eu">Sobre mim</a>
+                    </li><a href="#conhecimentos">Conhecimentos</a>
+                </li><a href="#projetos">Projetos</a>
+            </li><a href="#contato">Contato</a>
+                </ul>
+            </div>
+            <div class="sidebar-bloco">
+                <h3>Redes</h3>
+                <ul class="sidebar-links">
+                    <li><a href="https://github.com/Ander010102" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+                    <li><a href="https://www.linkedin.com/in/anderson-carneiro-dos-santos-b381743b6" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+                </ul>
+            </div>
+        </aside>
 
     <main>
 
         <section id="eu">
-            <button onclick="apresentacao()">Quem sou eu?</button>
-            <button onclick="alterarTitulo()">Alterar Título</button>
-            <button onclick="destacarDestaque()">Destacar seção destaque</button>
+            <button id="botao-destaque" class="btn-secundario">Destacar seção destaque</button>
             <h2>Quem sou eu</h2>
             <p class="destaque">Sou estudante de Análise e Desenvolvimento de Sistemas na Fatec de Carapicuíba, e estudo
-                nessa área desde o ensino médio. Além disso, gosto bastante de esportes, que pratico há anos, e também
-                curto jogar, principalmente video game. Já fiz diversos cursos, que vão desde HTML e engenharia de
+                nessa área desde o ensino médio. Já fiz diversos cursos, que vão desde HTML e engenharia de
                 software até gestão de conflitos e de pessoas, que sinto ser importante para meu desenvolvimento
                 profissional e individual.</p>
             <p class="destaque">O que me motiva a estudar tecnologia é o meu interesse pela área, que tenho desde o
@@ -92,12 +115,9 @@
         <section id="objetivos">
             <h3>🎯 Objetivos profissionais</h3>
             <ol>
-                <li><strong>Curto prazo (6 meses):</strong> Melhorar meu portfólio, estudar mais e conseguir um
-                    estágio.</li>
-                <li><strong>Médio prazo (1-2 anos):</strong> Caso eu já esteja no estágio, ser efetivado, continuar
-                    estudando e começar a juntar uma boa renda.</li>
-                <li><strong>Longo prazo (3-5 anos):</strong> Continuar juntando uma renda e investindo, continuar
-                    estudando e ir subindo de cargo com o tempo.</li>
+                <li><strong>Curto prazo (6 meses):</strong> Fortalecer meus conhecimentos em programação e desenvolvimento de software, aprimorando minhas habilidades técnicas por meio dos estudos e da criação de projetos próprios. Meu objetivo é começar a construir um portfólio e me preparar para conquistar uma oportunidade de estágio na área de tecnologia.</li>
+                <li><strong>Médio prazo (1-2 anos):</strong> Conquistar uma oportunidade de estágio ou minha primeira experiência profissional como desenvolvedor, aplicando na prática os conhecimentos adquiridos durante a faculdade. Quero desenvolver minhas habilidades, aprender com profissionais experientes e ganhar experiência em projetos reais.</li>
+                <li><strong>Longo prazo (3-5 anos):</strong> Concluir a graduação em Análise e Desenvolvimento de Sistemas e estar atuando profissionalmente na área de desenvolvimento de software. Pretendo me tornar um profissional qualificado, com experiência no desenvolvimento de soluções completas e capacidade de contribuir em projetos de diferentes níveis de complexidade, buscando também me especializar em uma área da tecnologia alinhada aos meus interesses e objetivos profissionais.</li>
             </ol>
         </section>
 
@@ -164,7 +184,8 @@
                     <h3>Projeto 2: SistemaProjetos </h3>
                     <p>Aplicação acadêmica para cadastro, organização e acompanhamento de projetos. O sistema possui duas interfaces — Java Swing (desktop) e Web (navegador) — que utilizam a mesma API HTTP em Java e compartilham os arquivos CSV de dados. O acesso é protegido por cadastro e login. Após autenticar, o usuário encontra cinco áreas principais: Dashboard, Projetos, Categorias, Relatórios e Configurações.</p>
                 </div>
-          
+            </div>
+        </section>
 
         <section id="rotina">
             <h3 class="title_rotina">📅 Minha rotina de estudos</h3>
@@ -229,8 +250,6 @@
                 <p id="feedback" aria-live="polite"></p>
             </form>
 
-
-
             <h4>Se preferir pelo telefone, entre em contato:</h4>
             <form>
                 <label for="assuntoSelect">Assunto:</label>
@@ -249,26 +268,23 @@
             </form>
         </section>
 
-        <p>Você clicou no botão <span id="contador">0</span> vezes.</p>
-        <button onclick="contarClique()">Clique aqui</button>
 
     </main>
 
+    </div> <!-- Fecha o layout-conteudo -->
 
+<footer>
+    <p>&copy; 2026 - Anderson Carneiro dos Santos | Desenvolvimento Web</p>
 
-    <footer>
-        <p>&copy; 2026 - Anderson Carneiro dos Santos | Desenvolvimento Web</p>
-        <div>
-            <a href="https://github.com/Ander010102">GitHub</a>
-            <a href="https://www.linkedin.com/in/anderson-carneiro-dos-santos-b381743b6">LinkedIn</a>
-        </div>
-
-    </footer>
+    <div>
+        <a href="https://github.com/Ander010102">GitHub</a>
+        <a href="https://www.linkedin.com/in/anderson-carneiro-dos-santos-b381743b6">LinkedIn</a>
+        <a href="#titulo_principal">Voltar ao topo</a>
+    </div>
+</footer>
 
     <script src="js/script.js"></script>
 
 </body>
-
-
 
 </html>
