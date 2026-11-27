@@ -876,3 +876,52 @@ button {
     }
 
 }
+
+
+/* =========================================
+   CONTATOS LADO A LADO
+   ========================================= */
+
+.contatos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.contato-card {
+    min-width: 0;
+    padding: 20px;
+
+    background-color: var(--fundo);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+}
+
+.contato-card h4 {
+    margin: 0 0 18px;
+    color: var(--acento);
+}
+
+.contato-card form {
+    width: 100%;
+    max-width: none;
+}
+
+.contato-card button {
+    width: 100%;
+}
+
+/* Feedback dos dois formulários */
+.contato-card #feedback,
+.contato-card #feedbackTelefone {
+    max-width: none;
+    margin-top: 14px;
+}
+
+/* Em telas menores, os formulários ficam um abaixo do outro */
+@media (max-width: 900px) {
+    .contatos-grid {
+        grid-template-columns: 1fr;
+    }
+}
