@@ -228,45 +228,77 @@
             <p>Meu primeiro código foi um "Olá, Mundo" em Java!</p>
         </aside>
 
-        <section id="contato">
-            <h3>Fale comigo</h3>
+        
+<section id="contato">
+    <h3>Fale comigo</h3>
 
-            <h4>Se você tiver alguma dúvida ou sugestão, entre em contato:</h4>
+    <div class="contatos-grid">
+
+        <!-- CONTATO POR E-MAIL -->
+        <div class="contato-card">
+
+            <h4>Entre em contato por e-mail</h4>
+
             <form id="formContato" novalidate>
+
                 <label for="nomeContato">Nome:</label>
-                <input type="text" id="nomeContato" required minlength="3" maxlength="50">
+                <input type="text" id="nomeContato"
+                    required minlength="3" maxlength="50">
 
                 <label for="emailContato">E-mail:</label>
-                <input type="email" id="emailContato" required maxlength="100">
+                <input type="email" id="emailContato"
+                    required maxlength="100">
 
                 <label for="assunto">Assunto:</label>
-                <input type="text" id="assunto" maxlength="80" placeholder="Dúvida, sugestão...">
+                <input type="text" id="assunto"
+                    maxlength="80" placeholder="Dúvida, sugestão...">
 
                 <label for="mensagemContato">Mensagem:</label>
-                <textarea id="mensagemContato" required minlength="10" maxlength="500"
+                <textarea id="mensagemContato"
+                    required minlength="10" maxlength="500"
                     placeholder="Digite sua mensagem aqui..."></textarea>
 
                 <button type="submit">Enviar mensagem</button>
-                <p id="feedback" aria-live="polite"></p>
-            </form>
 
-            <h4>Se preferir pelo telefone, entre em contato:</h4>
-            <form>
+                <p id="feedback" aria-live="polite"></p>
+
+            </form>
+        </div>
+
+        <!-- CONTATO POR TELEFONE -->
+        <div class="contato-card">
+
+            <h4>Solicitar contato por telefone</h4>
+
+            <form id="formTelefone" novalidate>
+
                 <label for="assuntoSelect">Assunto:</label>
-                <select id="assuntoSelect">
-                    <option>Dúvida sobre curso</option>
-                    <option>Sugestão</option>
+                <select id="assuntoSelect" required>
+                    <option value="">Selecione um assunto</option>
+                    <option value="Dúvida sobre curso">Dúvida sobre curso</option>
+                    <option value="Sugestão">Sugestão</option>
                 </select>
 
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                <label for="telefone">Telefone com DDD:</label>
+                <input type="tel" id="telefone"
+                    placeholder="(11) 99999-9999"
+                    maxlength="15"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    required>
 
                 <label for="data">Prefere contato em que data?</label>
-                <input type="date" id="data">
+                <input type="date" id="data" required>
 
                 <button type="submit">Solicitar contato</button>
+
+                <p id="feedbackTelefone" aria-live="polite"></p>
+
             </form>
-        </section>
+        </div>
+
+    </div>
+</section>
 
 
     </main>
