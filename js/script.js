@@ -131,3 +131,130 @@ formContato.addEventListener("submit", function (e) {
     mostrarFeedback("✅ Obrigado, " + nome + "! Mensagem enviada com sucesso.", "sucesso");
     formContato.reset();
 });
+
+// ============================================
+// Validação do contato por telefone
+// ============================================
+
+const formTelefone = document.getElementById("formTelefone");
+const campoTelefone = document.getElementById("telefone");
+const campoData = document.getElementById("data");
+const assuntoSelect = document.getElementById("assuntoSelect");
+const feedbackTelefone = document.getElementById("feedbackTelefone");
+
+// Mostrar mensagens de erro ou sucesso
+function mostrarFeedbackTelefone(texto, tipo) {
+    feedbackTelefone.textContent = texto;
+    feedbackTelefone.className = tipo;
+}
+
+// Formatar telefone automaticamente enquanto digita
+function formatarTelefone(valor) {
+    const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+    if (numeros.length <= 2) {
+        return numeros.length > 0 ? "(" + numeros : "";
+    }
+
+    const ddd = numeros.slice(0, 2);
+    const numero = numeros.slice(2);
+
+    // Celular: (11) 99999-9999
+    if (numeros.length > 10) {
+        if (numero.length <= 5) {
+            return "(" + ddd + ") " + numero;
+        }
+
+        return "(" + ddd + ") " +
+            numero.slice(0, 5) + "-" + numero.slice(5);
+    }
+
+    // Telefone fixo: (11) 3333-4444
+    if (numero.length <= 4) {
+        return "(" + ddd + ") " + numero;
+    }
+
+    return "(" + ddd + ") " +
+        numero.slice(0, 4) + "-" + numero.slice(4);
+}
+
+// Validação em tempo real do telefone
+campoTelefone.addEventListener("input", function () {
+
+    this.value = formatarTelefone(this.value);
+
+    const numeros = this.value.replace(/\D/g, "");
+
+    if (numeros.length === 0) {
+        mostrarFeedbackTelefone("", "");
+    } else if (numeros.length < 10) {
+        mostrarFeedbackTelefone(
+            "Digite um telefone completo com DDD.",
+            "erro"
+        );
+    } else {
+        mostrarFeedbackTelefone(
+            "✅ Telefone válido!",
+            "sucesso"
+        );
+    }
+});
+
+// Validação no envio do formulário
+formTelefone.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const assunto = assuntoSelect.value;
+    const telefone = campoTelefone.value.replace(/\D/g, "");
+    const data = campoData.value;
+
+    // Verifica o assunto
+    if (assunto === "") {
+        mostrarFeedbackTelefone(
+            "❌ Selecione um assunto.",
+            "erro"
+        );
+        return;
+    }
+
+    // Verifica o telefone
+    if (!/^\d{10,11}$/.test(telefone)) {
+        mostrarFeedbackTelefone(
+            "❌ Digite um telefone válido com DDD.",
+            "erro"
+        );
+        return;
+    }
+
+    // Verifica se a data foi preenchida
+    if (data === "") {
+        mostrarFeedbackTelefone(
+            "❌ Selecione uma data para contato.",
+            "erro"
+        );
+        return;
+    }
+
+    // Verifica se a data não está no passado
+    const dataSelecionada = new Date(data + "T00:00:00");
+
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    if (dataSelecionada < hoje) {
+        mostrarFeedbackTelefone(
+            "❌ Escolha uma data igual ou posterior a hoje.",
+            "erro"
+        );
+        return;
+    }
+
+    // Todos os campos passaram pela validação
+    mostrarFeedbackTelefone(
+        "✅ Dados validados com sucesso! Solicitação pronta para envio.",
+        "sucesso"
+    );
+
+    formTelefone.reset();
+});
